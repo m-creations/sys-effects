@@ -40,7 +40,13 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    // expose $, jQuery and window.jQuery to global scope (needed for angular-dragndrop)
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      "window.jQuery": 'jquery'
+    })
   ],
   devServer: {
     publicPath: '/',
