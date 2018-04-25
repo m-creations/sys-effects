@@ -1,0 +1,30 @@
+.sys-effects-editor {
+  display: flex;
+  flex-direction: row;
+  height: 90%;
+  box-sizing: border-box;
+  margin:5% 5rem;
+  border: 0.25rem solid rgba(255,255,255,0.9);
+
+  items-pool {
+    flex: 1;
+  }
+
+  .related-items {
+    flex: 1;
+  }
+
+  .instructions {
+    position: absolute;
+    // center vertically in the parent element,
+    top: 20%;
+    // this works for any parent height
+    transform: translateY(-50%);
+    margin: 5%;
+    opacity: 0.25;
+    font-size: 1.5em;
+    width: 90%;
+    text-align: center;
+    z-index: 1000;
+  }
+}

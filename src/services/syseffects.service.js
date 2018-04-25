@@ -8,12 +8,12 @@
 
 export default class SysEffectsService {
 
-  constructor(/* AppConstants, $http */) {
+  constructor(/* AppConstants,*/ $http) {
     'ngInject';
  
     // no http call yet
     // this.AppConstants = AppConstants;
-    // this.$http = $http;
+    this.$http = $http;
 
     // Object to store the retrieved effects (maybe we'll need to cache)
     this.current = null;
@@ -25,151 +25,181 @@ export default class SysEffectsService {
       resolve({
         sysEffects: [
           {
+            id: 'sys01',
             title: 'System Effect 01',
             notes: 'System Effect 01',
             related_effects: []
           },
           {
+            id: 'sys02',
             title: 'System Effect 02',
             notes: 'System Effect 02',
             related_effects: []
           },
           {
+            id: 'sys03',
             title: 'System Effect 03',
             notes: 'System Effect 03',
             related_effects: []
           },
           {
+            id: 'sys04',
             title: 'System Effect 04',
             notes: 'System Effect 04',
             related_effects: []
           },
           {
+            id: 'sys05',
             title: 'System Effect 05',
             notes: 'System Effect 05',
             related_effects: []
           },
           {
+            id: 'sys06',
             title: 'System Effect 06',
             notes: 'System Effect 06',
             related_effects: []
           },
           {
+            id: 'sys07',
             title: 'System Effect 07',
             notes: 'System Effect 07',
             related_effects: []
           },
           {
+            id: 'sys08',
             title: 'System Effect 08',
             notes: 'System Effect 08',
             related_effects: []
           },
           {
+            id: 'sys09',
             title: 'System Effect 09',
             notes: 'System Effect 09',
             related_effects: []
           },
           {
+            id: 'sys10',
             title: 'System Effect 10',
             notes: 'System Effect 10',
             related_effects: []
           },
           {
+            id: 'sys11',
             title: 'System Effect 11',
             notes: 'System Effect 11',
             related_effects: []
           },
           {
+            id: 'sys12',
             title: 'System Effect 12',
             notes: 'System Effect 12',
             related_effects: []
           },
           {
+            id: 'sys13',
             title: 'System Effect 13',
             notes: 'System Effect 13',
             related_effects: []
           },
           {
+            id: 'sys14',
             title: 'System Effect 14',
             notes: 'System Effect 14',
             related_effects: []
           },
           {
+            id: 'sys15',
             title: 'System Effect 15',
             notes: 'System Effect 15',
             related_effects: []
           },
           {
+            id: 'sys16',
             title: 'System Effect 16',
             notes: 'System Effect 16',
             related_effects: []
           },
           {
+            id: 'sys17',
             title: 'System Effect 17',
             notes: 'System Effect 17',
             related_effects: []
           },
           {
+            id: 'sys18',
             title: 'System Effect 18',
             notes: 'System Effect 18',
             related_effects: []
           },
           {
+            id: 'sys19',
             title: 'System Effect 19',
             notes: 'System Effect 19',
             related_effects: []
           },
           {
+            id: 'sys20',
             title: 'System Effect 20',
             notes: 'System Effect 20',
             related_effects: []
           },
           {
+            id: 'sys21',
             title: 'System Effect 21',
             notes: 'System Effect 21',
             related_effects: []
           },
           {
+            id: 'sys22',
             title: 'System Effect 22',
             notes: 'System Effect 22',
             related_effects: []
           },
           {
+            id: 'sys23',
             title: 'System Effect 23',
             notes: 'System Effect 23',
             related_effects: []
           },
           {
+            id: 'sys24',
             title: 'System Effect 24',
             notes: 'System Effect 24',
             related_effects: []
           },
           {
+            id: 'sys25',
             title: 'System Effect 25',
             notes: 'System Effect 25',
             related_effects: []
           },
           {
+            id: 'sys26',
             title: 'System Effect 26',
             notes: 'System Effect 26',
             related_effects: []
           },
           {
+            id: 'sys27',
             title: 'System Effect 27',
             notes: 'System Effect 27',
             related_effects: []
           },
           {
+            id: 'sys28',
             title: 'System Effect 28',
             notes: 'System Effect 28',
             related_effects: []
           },
           {
+            id: 'sys29',
             title: 'System Effect 29',
             notes: 'System Effect 29',
             related_effects: []
           },
           {
+            id: 'sys30',
             title: 'System Effect 30',
             notes: 'System Effect 30',
             related_effects: []
@@ -177,151 +207,181 @@ export default class SysEffectsService {
         ],
         plantEffects: [
           {
+            id: 'plant01',
             title: 'Plant Effect 01',
             notes: 'Plant Effect 01',
             related_effects: []
           },
           {
+            id: 'plant02',
             title: 'Plant Effect 02',
             notes: 'Plant Effect 02',
             related_effects: []
           },
           {
+            id: 'plant03',
             title: 'Plant Effect 03',
             notes: 'Plant Effect 03',
             related_effects: []
           },
           {
+            id: 'plant04',
             title: 'Plant Effect 04',
             notes: 'Plant Effect 04',
             related_effects: []
           },
           {
+            id: 'plant05',
             title: 'Plant Effect 05',
             notes: 'Plant Effect 05',
             related_effects: []
           },
           {
+            id: 'plant06',
             title: 'Plant Effect 06',
             notes: 'Plant Effect 06',
             related_effects: []
           },
           {
+            id: 'plant07',
             title: 'Plant Effect 07',
             notes: 'Plant Effect 07',
             related_effects: []
           },
           {
+            id: 'plant08',
             title: 'Plant Effect 08',
             notes: 'Plant Effect 08',
             related_effects: []
           },
           {
+            id: 'plant09',
             title: 'Plant Effect 09',
             notes: 'Plant Effect 09',
             related_effects: []
           },
           {
+            id: 'plant10',
             title: 'Plant Effect 10',
             notes: 'Plant Effect 10',
             related_effects: []
           },
           {
+            id: 'plant11',
             title: 'Plant Effect 11',
             notes: 'Plant Effect 11',
             related_effects: []
           },
           {
+            id: 'plant12',
             title: 'Plant Effect 12',
             notes: 'Plant Effect 12',
             related_effects: []
           },
           {
+            id: 'plant13',
             title: 'Plant Effect 13',
             notes: 'Plant Effect 13',
             related_effects: []
           },
           {
+            id: 'plant14',
             title: 'Plant Effect 14',
             notes: 'Plant Effect 14',
             related_effects: []
           },
           {
+            id: 'plant15',
             title: 'Plant Effect 15',
             notes: 'Plant Effect 15',
             related_effects: []
           },
           {
+            id: 'plant16',
             title: 'Plant Effect 16',
             notes: 'Plant Effect 16',
             related_effects: []
           },
           {
+            id: 'plant17',
             title: 'Plant Effect 17',
             notes: 'Plant Effect 17',
             related_effects: []
           },
           {
+            id: 'plant18',
             title: 'Plant Effect 18',
             notes: 'Plant Effect 18',
             related_effects: []
           },
           {
+            id: 'plant19',
             title: 'Plant Effect 19',
             notes: 'Plant Effect 19',
             related_effects: []
           },
           {
+            id: 'plant20',
             title: 'Plant Effect 20',
             notes: 'Plant Effect 20',
             related_effects: []
           },
           {
+            id: 'plant21',
             title: 'Plant Effect 21',
             notes: 'Plant Effect 21',
             related_effects: []
           },
           {
+            id: 'plant22',
             title: 'Plant Effect 22',
             notes: 'Plant Effect 22',
             related_effects: []
           },
           {
+            id: 'plant23',
             title: 'Plant Effect 23',
             notes: 'Plant Effect 23',
             related_effects: []
           },
           {
+            id: 'plant24',
             title: 'Plant Effect 24',
             notes: 'Plant Effect 24',
             related_effects: []
           },
           {
+            id: 'plant25',
             title: 'Plant Effect 25',
             notes: 'Plant Effect 25',
             related_effects: []
           },
           {
+            id: 'plant26',
             title: 'Plant Effect 26',
             notes: 'Plant Effect 26',
             related_effects: []
           },
           {
+            id: 'plant27',
             title: 'Plant Effect 27',
             notes: 'Plant Effect 27',
             related_effects: []
           },
           {
+            id: 'plant28',
             title: 'Plant Effect 28',
             notes: 'Plant Effect 28',
             related_effects: []
           },
           {
+            id: 'plant29',
             title: 'Plant Effect 29',
             notes: 'Plant Effect 29',
             related_effects: []
           },
           {
+            id: 'plant30',
             title: 'Plant Effect 30',
             notes: 'Plant Effect 30',
             related_effects: []

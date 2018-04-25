@@ -21,7 +21,7 @@ module.exports = {
         }
       },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
-      { test: /\.sass$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
+      { test: /\.s[ac]ss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
       { test: /\.less$/, loader: 'less-loader' },
       { test: /\.html$/, loader: 'raw-loader' },
       // inline base64 URLs for <=8k images, direct URLs for the rest

@@ -1,7 +1,7 @@
 import angular from 'angular';
 import uiGrid from 'angular-ui-grid';
+import 'angular-dragdrop/src/angular-dragdrop.js';
 
-import {theComponent} from './superAwesomeComponent/theComponent.js';
 import {SystemEffectsEditor} from './sys-effects-editor/sys-effects-editor.component.js';
 import {services} from './services';
 
@@ -16,8 +16,6 @@ class IndexController {
   }
 }
 
-
-angular.module('app', [ uiGrid, 'app.services', 'app.sys-effects-editor' ])
-  .component('superAwesomeComponent', theComponent)
+angular.module('app', [ uiGrid, 'ngDragDrop', 'app.services', 'app.sys-effects-editor' ])
   .component('systemEffectsEditor', SystemEffectsEditor)
   .controller('IndexController', IndexController);
