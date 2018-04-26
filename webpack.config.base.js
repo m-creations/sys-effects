@@ -3,6 +3,9 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: {
+    jQueryUi: 'webpack-jquery-ui',
+    jquiDraggable: 'webpack-jquery-ui/draggable',
+    jquiDroppable: 'webpack-jquery-ui/droppable',
     app: './src/app.js'
   },
   output: {
@@ -45,7 +48,8 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
-      "window.jQuery": 'jquery'
+      "window.jQuery": 'jquery',
+      "window.$": 'jquery'
     })
   ],
   devServer: {

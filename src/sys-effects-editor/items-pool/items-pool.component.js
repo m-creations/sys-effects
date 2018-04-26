@@ -19,7 +19,8 @@ class ItemsPoolController {
   /**
    * @return {undefined} undefined
    */
-  constructor () {
+  constructor ($scope) {
+    this.$scope = $scope;
   }
 
   /**
@@ -40,7 +41,7 @@ class ItemsPoolController {
         {
           field: this.displayAttribute,
           name: (this.title === undefined ? '' : this.title),
-          cellTemplate: '<div class="ui-grid-cell-contents">Haha: {{COL_FIELD CUSTOM_FILTERS}}</div>',
+          cellTemplate: '<div class="ui-grid-cell-contents" data-drag="true" jqyoui-draggable="{animate:true}">Haha: {{COL_FIELD CUSTOM_FILTERS}}</div>',
           cellTooltip: function(row, col) {
             return row.entity.notes;
           }

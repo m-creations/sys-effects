@@ -1,3 +1,9 @@
+import 'jquery';
+import 'jquery-ui';
+
+import 'webpack-jquery-ui/draggable';
+import 'webpack-jquery-ui/droppable';
+
 import angular from 'angular';
 import uiGrid from 'angular-ui-grid';
 import 'angular-dragdrop/src/angular-dragdrop.js';
