@@ -51,13 +51,20 @@ class SysEffectsEditorController {
     return ! this.contextEditorOptions.data.length;
   }
 
-  /**
-   * Calls someOutput with the value of someInput put in fancyFunction
-   * @return {undefined} undefined
-   */
-  doSuperThings () {
-    console.log('doing super things');
-    this.someOutput({value: fancyFunction(this.someInput, 3)});
+  onDrop(scope, event) {
+    try {
+      let options = eval('(' + event.draggable[0].attributes['jqyoui-draggable'].value + ')');
+      let effect = JSON.parse(event.draggable[0].attributes['data-entity'].value);
+      // TODO: check whether element is already present in the data array
+      this.contextEditorOptions.data.push(effect);
+    } catch (e) {
+      // this can only happen during development with programming errors
+      console.log("Error while trying to extract the dropped effect's data: " + e);
+    }
+  }
+
+  startDrag(effect){
+    console.log("startDrag: " + effect);
   }
 
   onDelete () {

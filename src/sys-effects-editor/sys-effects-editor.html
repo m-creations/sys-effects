@@ -1,6 +1,6 @@
 <div class="sys-effects-editor">
   <items-pool data="$ctrl.sysEffects" title="'System Effects'" display-attribute="'title'"></items-pool>
-  <div class="related-items" ui-grid="$ctrl.contextEditorOptions">
+  <div class="related-items" ui-grid="$ctrl.contextEditorOptions" jqyoui-droppable="{ multiple: true, onDrop: '$ctrl.onDrop' }" data-drop="true">
     <div class="instructions" ng-if="$ctrl.hideContextEditor()">
       Please select an effect from the left or right list to see and
       edit the related effects of the opposite side here.

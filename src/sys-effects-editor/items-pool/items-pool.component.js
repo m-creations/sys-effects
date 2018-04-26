@@ -41,7 +41,13 @@ class ItemsPoolController {
         {
           field: this.displayAttribute,
           name: (this.title === undefined ? '' : this.title),
-          cellTemplate: '<div class="ui-grid-cell-contents" data-drag="true" jqyoui-draggable="{animate:true}">Haha: {{COL_FIELD CUSTOM_FILTERS}}</div>',
+          // helper: 'clone' -> the original row remains in place
+          // appendTo: 'body' -> append the (cloned) element which is dragged
+          // to the body element, otherwise the element hides behind all
+          // page elements other than the original container
+          // data-entity is used to transport the entity row to the parent
+          // controller (cf. onDrop)
+          cellTemplate: '<div class="ui-grid-cell-contents draggable" data-drag="true" jqyoui-draggable="{ index: {{rowRenderIndex}}, animate: true}" data-entity="{{row.entity}}" data-jqyoui-options="{ helper: \'clone\', appendTo: \'body\' }" >{{COL_FIELD CUSTOM_FILTERS}}</div>',
           cellTooltip: function(row, col) {
             return row.entity.notes;
           }
@@ -52,12 +58,9 @@ class ItemsPoolController {
         this.gridApi = gridApi;
       }
     };
-
-    console.log("data: " + this.data);
   }
 
   $onChanges(changes) {
-    console.log("changes: " + JSON.stringify(changes));
     if(this.gridOptions !== undefined && changes.data !== undefined && changes.data.currentValue !== undefined) {
       this.gridOptions.data = changes.data.currentValue;
     }
