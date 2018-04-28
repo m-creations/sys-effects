@@ -61,6 +61,6 @@
     "angular-ui-bootstrap": "^2.5.6",
     "angular-ui-grid": "^4.4.7",
     "bootstrap": "^3.3.5",
-    "jquery": "^3.3.1"
+    "es6-shim": "^0.35.3"
   }
 }

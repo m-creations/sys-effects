@@ -1,10 +1,10 @@
 <div class="sys-effects-editor">
-  <items-pool data="$ctrl.sysEffects" title="'System Effects'" display-attribute="'title'"></items-pool>
+  <items-pool data="$ctrl.sysEffects" title="'System Effects'" display-attribute="'title'" unselect="$ctrl.unselectSysEffects"></items-pool>
   <div class="related-items" ui-grid="$ctrl.contextEditorOptions" jqyoui-droppable="{ multiple: true, onDrop: '$ctrl.onDrop' }" data-drop="true">
     <div class="instructions" ng-if="$ctrl.hideContextEditor()">
       Please select an effect from the left or right list to see and
       edit the related effects of the opposite side here.
     </div>
   </div>
-  <items-pool data="$ctrl.plantEffects" title="'Plant Effects'" display-attribute="'title'"></items-pool>
+  <items-pool data="$ctrl.plantEffects" title="'Plant Effects'" display-attribute="'title'" unselect="$ctrl.unselectPlantEffects"></items-pool>
 </div>

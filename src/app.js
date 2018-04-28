@@ -1,6 +1,8 @@
 import 'jquery';
 import 'jquery-ui';
 
+import 'es6-shim';
+
 import 'webpack-jquery-ui/draggable';
 import 'webpack-jquery-ui/droppable';
 
@@ -22,6 +24,6 @@ class IndexController {
   }
 }
 
-angular.module('app', [ uiGrid, 'ngDragDrop', 'app.services', 'app.sys-effects-editor' ])
+angular.module('app', [ uiGrid, 'ui.grid.selection', 'ngDragDrop', 'app.services', 'app.sys-effects-editor' ])
   .component('systemEffectsEditor', SystemEffectsEditor)
   .controller('IndexController', IndexController);

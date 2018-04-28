@@ -28,8 +28,11 @@ class SysEffectsEditorController {
    */
   constructor (SysEffectsService) {
     this.service = SysEffectsService;
-    this.relatedEffects = [
-    ];
+    this.sysEffects = [];
+    this.plantEffects = [];
+    this.unselectSysEffects = false;
+    this.unselectPlantEffects = false;
+    this.relatedEffects = [];
     this.contextEditorOptions = {
       columnDefs: [
         {
@@ -57,14 +60,15 @@ class SysEffectsEditorController {
       let effect = JSON.parse(event.draggable[0].attributes['data-entity'].value);
       // TODO: check whether element is already present in the data array
       this.contextEditorOptions.data.push(effect);
+
+      // unselect everything
+      this.unselectSysEffects = true;
+      this.unselectPlantEffects = true;
+      
     } catch (e) {
       // this can only happen during development with programming errors
       console.log("Error while trying to extract the dropped effect's data: " + e);
     }
-  }
-
-  startDrag(effect){
-    console.log("startDrag: " + effect);
   }
 
   onDelete () {
@@ -76,6 +80,7 @@ class SysEffectsEditorController {
    * @return {undefined} undefined
    */
   $onInit () {
+    console.log('$onInit of SysEffectsEditorController');
     this.service.retrieveEffects().then(result => {
       this.sysEffects = result.sysEffects;
       this.plantEffects = result.plantEffects;
