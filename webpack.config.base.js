@@ -3,6 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: {
+    es5Shim: 'es5-shim',
     jQueryUi: 'webpack-jquery-ui',
     jquiDraggable: 'webpack-jquery-ui/draggable',
     jquiDroppable: 'webpack-jquery-ui/droppable',
