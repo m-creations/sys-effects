@@ -21,8 +21,9 @@ export default class SysEffectsService {
 
   // mock the retrieval of effects from backend
   retrieveEffects() {
+    var current = this.current;
     return  new Promise(function(resolve, reject) {
-      resolve({
+      resolve(current = {
         sysEffects: [
           {
             id: 'sys01',
