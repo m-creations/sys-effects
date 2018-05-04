@@ -63,6 +63,17 @@ class ItemsPoolController {
     };
   }
 
+  $doCheck() {
+    if(this.unselectRows) {
+      // do we have any selection to clear?
+      if(this.gridApi && this.gridApi.selection.getSelectedCount() > 0) {
+        this.gridApi.selection.clearSelectedRows();
+      }
+      // in any case, reset to false
+      this.unselectRows = false;
+    }
+  }
+
   $onChanges(changes) {
     if(this.gridOptions && changes.data && changes.data.currentValue) {
       this.gridOptions.data = changes.data.currentValue;
