@@ -23,20 +23,18 @@ class ItemsPoolController {
     this.$scope = $scope;
   }
 
-  /**
-   * @return {undefined} undefined
-   */
-  doSuperThings () {
-    console.log('doing super things');
-    this.someOutput({value: fancyFunction(this.someInput, 3)});
+  selectCallback(row) {
+    row.grid.appScope.onSelectionChanged({ row: row });
   }
 
   /**
    * @return {undefined} undefined
    */
   $onInit () {
+    let $ctrl = this;
     this.gridApi = null;
     this.gridOptions = {
+      appScopeProvider: $ctrl,
       columnDefs: [
         {
           field: this.displayAttribute,
@@ -56,10 +54,7 @@ class ItemsPoolController {
       data: (this.data === undefined ? [] : this.data),
       onRegisterApi: (gridApi) => {
         this.gridApi = gridApi;
-        gridApi.selection.on.rowSelectionChanged(this.$scope, function(row) {
-          var msg = 'row selected ' + row.entity.title;
-          console.log(msg);
-        });
+        gridApi.selection.on.rowSelectionChanged(null, this.selectCallback);
       },
       enableRowSelection: true,
       enableRowHeaderSelection: false,
@@ -69,17 +64,10 @@ class ItemsPoolController {
   }
 
   $onChanges(changes) {
-    console.log("changes: " + JSON.stringify(changes));
-    if(this.gridOptions !== undefined && changes.data !== undefined && changes.data.currentValue !== undefined) {
+    if(this.gridOptions && changes.data && changes.data.currentValue) {
       this.gridOptions.data = changes.data.currentValue;
     }
-    console.log("unselect is " + this.unselect);
-    if(this.unselect) {
-      this.gridApi.selection.clearSelectedRows();
-      this.unselect = false;
-    }
   }
-
 }
 
 /**
@@ -92,8 +80,8 @@ export const ItemsPool = {
     title: '<',
     displayAttribute: '<',
     tooltipAttribute: '<',
-    unselect: '<',
-    selected: '&'
+    unselectRows: '=',
+    onSelectionChanged: '&'
   },
   template: template,
   controller: ItemsPoolController

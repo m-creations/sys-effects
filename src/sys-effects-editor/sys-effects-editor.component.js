@@ -71,6 +71,25 @@ class SysEffectsEditorController {
     }
   }
 
+  selectionChanged(row) {
+    let effect = row.entity;
+    if(row.isSelected) {
+      // some effect in one of the items pool components was selected
+      this.selectedEffect = effect;
+      this.contextEditorOptions.data = this.findRelatedEffects(effect);
+      // now unselect the other items pool component
+      if(effect.type == 'sys') {
+        this.unselectPlantEffects = true;
+      } else {
+        this.unselectSysEffects = true;
+      }
+    } else {
+      // an unselect event
+      this.selectedEffect = null;
+      this.contextEditorOptions.data = [];
+    }
+  }
+
   onDelete () {
     console.log('onDelete');
   }
@@ -86,6 +105,28 @@ class SysEffectsEditorController {
       this.plantEffects = result.plantEffects;
       console.log('input bindings are defined!', this.sysEffects[0]);
     });
+  }
+  /**
+   * Search the related effects of the argument. This is trivial for
+   * the case where the argument is a system effect, as the
+   * corresponding plant effects are present in the array
+   * effect.related_effects. For plant effects, we have to search the
+   * array of system effects and find those system effects which have
+   * the argument effect in their related_effects array.
+   */
+  findRelatedEffects(effect) {
+    if(effect.type == 'sys') {
+      return effect.related_effects;
+    }
+    // for plant effects, we have to search the system effects' related_effects
+    let result = [];
+    for(var sys of this.sysEffects) {
+      if (this.service.findEffectById(sys.related_effects, effect.id)) {
+        result = result.concat(sys);
+        continue;
+      }
+    }
+    return result;
   }
 }
 
