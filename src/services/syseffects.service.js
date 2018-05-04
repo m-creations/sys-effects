@@ -31,6 +31,13 @@ export default class SysEffectsService {
             title: 'System Effect 01',
             notes: 'System Effect 01',
             related_effects: [
+              {
+                id: 'plant02',
+                type: 'plant',
+                title: 'Plant Effect 02',
+                notes: 'Plant Effect 02',
+                related_effects: []
+              }
             ]
           },
           {
@@ -38,7 +45,15 @@ export default class SysEffectsService {
             type: 'sys',
             title: 'System Effect 02',
             notes: 'System Effect 02',
-            related_effects: []
+            related_effects: [
+              {
+                id: 'plant02',
+                type: 'plant',
+                title: 'Plant Effect 02',
+                notes: 'Plant Effect 02',
+                related_effects: []
+              }
+            ]
           },
           {
             id: 'sys03',
