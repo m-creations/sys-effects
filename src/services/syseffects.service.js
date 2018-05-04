@@ -19,6 +19,18 @@ export default class SysEffectsService {
     this.current = null;
   }
 
+  findEffectById(effects, id) {
+    if(! (effects && effects.length > 0))
+      return undefined;
+
+    return effects.find(e => { return e.id == id; });
+  }
+
+  updateSystemEffect(effect) {
+    // call backend
+    console.log('Backend call for updating system effect ' + effect.title);
+  }
+
   // mock the retrieval of effects from backend
   retrieveEffects() {
     var current = this.current;

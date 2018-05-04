@@ -32,39 +32,47 @@ class SysEffectsEditorController {
     this.plantEffects = [];
     this.unselectSysEffects = false;
     this.unselectPlantEffects = false;
-    this.relatedEffects = [];
+    this.selectedEffect = null;
     this.contextEditorOptions = {
       columnDefs: [
         {
           field: 'title',
           name: 'Related Effects',
-          cellTooltip: true
+          cellTooltip: true,
+          cellTemplate: '<div class="ui-grid-cell-contents">{{COL_FIELD CUSTOM_FILTERS}}</div>'
         }
       ],
-      cellTemplate: '<div class="ui-grid-cell-contents">Haha: {{COL_FIELD CUSTOM_FILTERS}}</div>',
-      data: []
+      data: [],
+      onRegisterApi: (gridApi) => {
+        this.gridApi = gridApi;
+      }
     };
   }
 
   /**
    * Shall we display the context editor component?
-   * @return true, if an element from left or right was selected, false otherwise
+   * @return false, if an element from left or right was selected, true otherwise
    */
   hideContextEditor() {
-    return ! this.contextEditorOptions.data.length;
+    return !this.selectedEffect;
   }
 
   onDrop(scope, event) {
     try {
-      let options = eval('(' + event.draggable[0].attributes['jqyoui-draggable'].value + ')');
       let effect = JSON.parse(event.draggable[0].attributes['data-entity'].value);
-      // TODO: check whether element is already present in the data array
-      this.contextEditorOptions.data.push(effect);
-
-      // unselect everything
-      this.unselectSysEffects = true;
-      this.unselectPlantEffects = true;
-      
+      if(this.isDropAllowed(effect)) {
+        this.contextEditorOptions.data.push(effect);
+        // when dropping system effects we have to associate the selected
+        // plant effect to the dropped system effect, but the dropped effect
+        // is a clone, so we have to search the sysEffects
+        if(effect.type == 'sys') {
+          let sys = this.service.findEffectById(this.sysEffects, effect.id); 
+          sys.related_effects.push(this.selectedEffect);
+          this.service.updateSystemEffect(sys);
+        } else {
+          this.service.updateSystemEffect(this.selectedEffect);
+        }
+      }
     } catch (e) {
       // this can only happen during development with programming errors
       console.log("Error while trying to extract the dropped effect's data: " + e);
@@ -103,9 +111,44 @@ class SysEffectsEditorController {
     this.service.retrieveEffects().then(result => {
       this.sysEffects = result.sysEffects;
       this.plantEffects = result.plantEffects;
-      console.log('input bindings are defined!', this.sysEffects[0]);
     });
   }
+
+  /**
+   * Compares the id attribute of the argument effect id to the list of the
+   * effects already present in the context editor and returns the effect,
+   * if it was found, otherwise undefined.
+   */
+  findInContextEditor(effect) {
+    return this.service.findEffectById(this.contextEditorOptions.data, effect.id);
+  }
+
+  /**
+   * Returns {false}, when a system effect is currently selected and
+   * {effect} is also a system effect.
+   *
+   * Returns {false}, when a plant effect is currently selected and
+   * {effect} is also a plant effect.
+   *
+   * Returns {false}, when no effect is currently selected.
+   *
+   * Returns {false}, if {effect} is already among the related effects
+   * of the selected effect.
+   *
+   * In all other cases, returns {true}
+   */
+  isDropAllowed(effect) {
+    if(!this.selectedEffect)
+      return false;
+    if(effect.type == this.selectedEffect.type)
+      return false;
+
+    if(this.findInContextEditor(effect))
+      return false;
+
+    return true;
+  }
+
   /**
    * Search the related effects of the argument. This is trivial for
    * the case where the argument is a system effect, as the
