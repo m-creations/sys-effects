@@ -38,7 +38,7 @@ class ItemsPoolController {
       columnDefs: [
         {
           field: this.displayAttribute,
-          name: (this.title === undefined ? '' : this.title),
+          name: this.title || '',
           // helper: 'clone' -> the original row remains in place
           // appendTo: 'body' -> append the (cloned) element which is dragged
           // to the body element, otherwise the element hides behind all
@@ -51,7 +51,7 @@ class ItemsPoolController {
           }
         }
       ],
-      data: (this.data === undefined ? [] : this.data),
+      data: this.data || [],
       onRegisterApi: (gridApi) => {
         this.gridApi = gridApi;
         gridApi.selection.on.rowSelectionChanged(null, this.selectCallback);
