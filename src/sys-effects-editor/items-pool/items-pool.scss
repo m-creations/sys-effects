@@ -1,0 +1,7 @@
+.ui-grid-header-cell-wrapper {
+  height: auto;
+}
+
+.ui-draggable-dragging {
+    @extend .ui-grid-row-selected !optional;
+}
