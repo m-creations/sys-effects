@@ -37,7 +37,7 @@ class ItemsPoolController {
       appScopeProvider: $ctrl,
       columnDefs: [
         {
-          field: this.displayAttribute,
+          field: 'title',
           name: this.title || '',
           // helper: 'clone' -> the original row remains in place
           // appendTo: 'body' -> append the (cloned) element which is dragged
@@ -89,8 +89,6 @@ export const ItemsPool = {
   bindings: {
     data: '<',
     title: '<',
-    displayAttribute: '<',
-    tooltipAttribute: '<',
     unselectRows: '=',
     onSelectionChanged: '&'
   },
