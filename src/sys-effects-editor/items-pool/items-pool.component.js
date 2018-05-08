@@ -47,7 +47,7 @@ class ItemsPoolController {
           // page elements other than the original container
           // data-entity is used to transport the entity row to the parent
           // controller (cf. onDrop)
-          cellTemplate: '<div class="ui-grid-cell-contents draggable" data-drag="true" jqyoui-draggable="{ index: {{rowRenderIndex}}, animate: true}" data-entity="{{row.entity}}" data-jqyoui-options="{ helper: \'clone\', appendTo: \'body\', opacity: 0.35, distance: 10 }" >{{COL_FIELD CUSTOM_FILTERS}}</div>',
+          cellTemplate: '<div class="ui-grid-cell-contents draggable" data-drag="true" jqyoui-draggable="{ index: {{rowRenderIndex}} }" data-entity="{{row.entity}}" data-jqyoui-options="{ helper: \'clone\', scroll: false, opacity: 0.35, zIndex: 100000, distance: 10 }" >{{COL_FIELD CUSTOM_FILTERS}}</div>',
           cellTooltip: function(row, col) {
             return row.entity.notes;
           }
