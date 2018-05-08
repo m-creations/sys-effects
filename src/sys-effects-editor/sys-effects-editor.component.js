@@ -76,6 +76,12 @@ class SysEffectsEditorController {
         } else {
           this.service.updateSystemEffect(this.selectedEffect);
         }
+        if(this.sysGraphEffect) {
+          this.sysGraphEffect = Object.assign({}, this.sysGraphEffect);
+        }
+        if(this.plantGraphEffect) {
+          this.plantGraphEffect = Object.assign({}, this.plantGraphEffect);
+        }
       }
     } catch (e) {
       // this can only happen during development with programming errors
