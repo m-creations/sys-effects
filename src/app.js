@@ -11,6 +11,7 @@ import uiGrid from 'angular-ui-grid';
 import 'angular-dragdrop/src/angular-dragdrop.js';
 
 import {SystemEffectsEditor} from './sys-effects-editor/sys-effects-editor.component.js';
+import {EffectGraph} from './effect-graph/effect-graph.component.js';
 import {services} from './services';
 
 
@@ -26,4 +27,5 @@ class IndexController {
 
 angular.module('app', [ uiGrid, 'ui.grid.selection', 'ngDragDrop', 'app.services', 'app.sys-effects-editor' ])
   .component('systemEffectsEditor', SystemEffectsEditor)
+  .component('effectGraph', EffectGraph)
   .controller('IndexController', IndexController);

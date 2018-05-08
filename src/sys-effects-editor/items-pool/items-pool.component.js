@@ -20,6 +20,8 @@ class ItemsPoolController {
    * @return {undefined} undefined
    */
   constructor ($scope) {
+    'ngInject';
+
     this.$scope = $scope;
   }
 

@@ -1,29 +1,88 @@
+$debug: false;
+
 .sys-effects-editor {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 90%;
   box-sizing: border-box;
   margin:5% 5rem;
   border: 0.25rem solid rgba(255,255,255,0.9);
 
+  .list-container {
+    display: flex;
+    flex-direction: row;
+
+    flex: 1;
+
+    @if ($debug) {
+      border: 1px dotted red;
+    }
+  }
+
   items-pool {
+    position: relative;
+    flex: 1;
+
+    .ui-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0px;
+      bottom: 2px;
+
+      @if ($debug) {
+        border: 1px dotted green;
+      }
+    }
+  }
+
+  .related-items-wrapper {
+    @extend items-pool;
+  }
+
+  .graph-container {
+    display: flex;
+    flex-direction: row;
+
+    flex: 1;
+
+    @if ($debug) {
+      border: 1px dotted green;
+    }
+  }
+
+  .sys-graph {
+    position: relative;
     flex: 1;
   }
 
-  .related-items {
+  .plant-graph {
+    position: relative;
     flex: 1;
+  }
+
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0px;
+    bottom: 2px;
+
+    @if ($debug) {
+      border: 1px dotted orange;
+    }
   }
 
   .instructions {
-    position: absolute;
+    position: fixed;
     // center vertically in the parent element,
     top: 20%;
     // this works for any parent height
-    transform: translateY(-50%);
+    transform: translateY(-10%);
     margin: 5%;
     opacity: 0.25;
-    font-size: 1.5em;
-    width: 90%;
+    font-size: 1.2em;
+    width: 85%;
     text-align: center;
     z-index: 1000;
   }

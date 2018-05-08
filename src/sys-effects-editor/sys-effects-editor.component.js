@@ -33,6 +33,10 @@ class SysEffectsEditorController {
     this.unselectSysEffects = false;
     this.unselectPlantEffects = false;
     this.selectedEffect = null;
+    // the root node of the (left) sys effect tree graph
+    this.sysGraphEffect = null;
+    // the root node of the (right) plant effect tree graph
+    this.plantGraphEffect = null;
     this.contextEditorOptions = {
       columnDefs: [
         {
@@ -84,16 +88,23 @@ class SysEffectsEditorController {
     if(row.isSelected) {
       // some effect in one of the items pool components was selected
       this.selectedEffect = effect;
-      this.contextEditorOptions.data = this.findRelatedEffects(effect);
+      var relatedEffects = this.findRelatedEffects(effect);
+      this.contextEditorOptions.data = relatedEffects;
       // now unselect the other items pool component
       if(effect.type == 'sys') {
         this.unselectPlantEffects = true;
+        this.sysGraphEffect = effect;
       } else {
         this.unselectSysEffects = true;
+        this.plantGraphEffect = effect;
+        // the plant effects graph now correctly shows the related effects
+        effect.related_effects = relatedEffects;
       }
     } else {
       // an unselect event
       this.selectedEffect = null;
+      this.sysGraphEffect = null;
+      this.plantGraphEffect = null;
       this.contextEditorOptions.data = [];
     }
   }
