@@ -1,6 +1,8 @@
 // (c) 2018 m-creations GmbH - All rights reserved
 
-import * as d3 from 'd3';
+import {select} from 'd3-selection';
+import {hierarchy, tree} from 'd3-hierarchy';
+import {linkHorizontal} from 'd3-shape';
 
 import style from './effect-graph.scss';
 
@@ -21,7 +23,7 @@ class EffectGraphController {
     this.width = $($element).width();
     this.height = $($element).height();
 
-    this.svg = d3.select(this.$element[0]).append("svg")
+    this.svg = select(this.$element[0]).append("svg")
       .attr("width", this.width)
       .attr("height", this.height);
     this.g = null;
@@ -75,18 +77,18 @@ class EffectGraphController {
         data.children = effect.related_effects.map( (val, idx) => { return { name: val.title, idx: idx, children: [] }; } );
       }
       // create a hierarchy from the root
-      const treeRoot = d3.hierarchy(data);
-      const tree = d3.tree(treeRoot).size([300,150]);
-      // nodes
+      const treeRoot = hierarchy(data);
+      tree(treeRoot).size([300,150]);
+      // get its nodes
       const nodes = treeRoot.descendants();
-      // links
+      // and its links
       const links = treeRoot.links(nodes);
 
       var link = this.svg.selectAll(".link")
           .data(links)
           .enter().append("path")
           .attr("class", "link")
-          .attr("d", d3.linkHorizontal()
+          .attr("d", linkHorizontal()
                 .x(function(d) { return (d.depth + 1) * 100 + 40; })
                 .y(function(d) { return (d.data.idx + 1) * 30 + 40; }));
 
