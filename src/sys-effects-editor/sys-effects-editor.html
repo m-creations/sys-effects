@@ -1,7 +1,7 @@
 <div class="sys-effects-editor">
   <div class="list-container">
     <items-pool data="$ctrl.sysEffects" title="'System Effects'" class="items-pool-sys" unselect-rows="$ctrl.unselectSysEffects" on-selection-changed="$ctrl.selectionChanged(row)"></items-pool>
-    <div class="related-items-wrapper" jqyoui-droppable="{ multiple: true, onDrop: '$ctrl.onDrop' }" data-drop="true">
+    <div class="related-items-wrapper" jqyoui-droppable="{ multiple: true, onDrop: '$ctrl.onDrop' }" jqyoui-options="{ tolerance:'touch' }" data-drop="true">
       <div class="related-items" ui-grid="$ctrl.contextEditorOptions">
         <div class="instructions" ng-if="$ctrl.hideContextEditor()">
           Please select an effect from the left or right list to see and
