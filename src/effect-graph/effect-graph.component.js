@@ -113,6 +113,5 @@ export const EffectGraph = {
   bindings: {
     effect: '<'
   },
-  template: '<div class="tree"></div>',
   controller: EffectGraphController
 };

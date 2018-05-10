@@ -1,18 +1,17 @@
 <div class="sys-effects-editor">
-  <div class="list-container">
-    <items-pool data="$ctrl.sysEffects" title="'System Effects'" class="items-pool-sys" unselect-rows="$ctrl.unselectSysEffects" on-selection-changed="$ctrl.selectionChanged(row)"></items-pool>
-    <div class="related-items-wrapper" jqyoui-droppable="{ multiple: true, onDrop: '$ctrl.onDrop' }" jqyoui-options="{ tolerance:'touch' }" data-drop="true">
-      <div class="related-items" ui-grid="$ctrl.contextEditorOptions">
-        <div class="instructions" ng-if="$ctrl.hideContextEditor()">
-          Please select an effect from the left or right list to see and
-          edit the related effects of the opposite side here.
-        </div>
+  <items-pool data="$ctrl.sysEffects" title="'System Effects'" class="items-pool-sys" unselect-rows="$ctrl.unselectSysEffects" on-selection-changed="$ctrl.selectionChanged(row)"></items-pool>
+  <!-- <div class="list-container"> -->
+  <div class="related-items-wrapper" jqyoui-droppable="{ multiple: true, onDrop: '$ctrl.onDrop' }" jqyoui-options="{ tolerance:'touch' }" data-drop="true">
+    <div class="related-items" ui-grid="$ctrl.contextEditorOptions">
+      <div class="instructions" ng-if="$ctrl.hideContextEditor()">
+        Please select an effect from the left or right list to see and
+        edit the related effects of the opposite side here.
       </div>
     </div>
-    <items-pool data="$ctrl.plantEffects" title="'Plant Effects'" class="items-pool-plant" unselect-rows="$ctrl.unselectPlantEffects" on-selection-changed="$ctrl.selectionChanged(row)"></items-pool>
+    <!-- </div> -->
   </div>
-  <div class="graph-container">
-    <effect-graph class="sys-graph" effect="$ctrl.sysGraphEffect">Sys Effects Graph</effect-graph>
-    <effect-graph class="plant-graph" effect="$ctrl.plantGraphEffect">Plant Effects Graph</effect-graph>
+  <items-pool data="$ctrl.plantEffects" title="'Plant Effects'" class="items-pool-plant" unselect-rows="$ctrl.unselectPlantEffects" on-selection-changed="$ctrl.selectionChanged(row)"></items-pool>
+  <effect-graph class="sys-graph" effect="$ctrl.sysGraphEffect"></effect-graph>
+  <effect-graph class="plant-graph" effect="$ctrl.plantGraphEffect"></effect-graph>
   </div>
 </div>
